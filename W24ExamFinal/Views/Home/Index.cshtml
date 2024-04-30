@@ -1,0 +1,32 @@
+﻿@model IEnumerable<W24ExamFinal.ViewModels.HomeSup>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Suppliers:</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Company Name</th>
+            <th>Products</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SupplierId</td>
+                <td>@item.SupplierName</td>
+                <td>@foreach (var prod in item.Top3)
+                    {
+                        <div>@prod.ProductName : @Math.Round((decimal)prod.UnitPrice, 2)</div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
